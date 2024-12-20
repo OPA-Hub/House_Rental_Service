@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>House Rent Listings</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
+    <script>
+        function storePropertyDetails(title, location, sqft, rent) {
+          const propertyDetails = {
+            title: title,
+            location: location,
+            sqft: sqft,
+            rent: rent
+          };
+          localStorage.setItem('propertyDetails', JSON.stringify(propertyDetails));
+          window.location.href = "Payment.html"; // Redirect to the payment page
+        }
+      </script>
+
+      <style>
+        .uk-card-media-left img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.uk-card-media-left:hover img {
+    transform: scale(1.1);
+}
+
+      </style>
+</head>
+
+<body>
+    <nav class="uk-navbar-container">
+        <div class="uk-container">
+            <div uk-navbar>
+
+                <div class="uk-navbar-center">
+
+                    <div class="uk-navbar-center-left">
+                        <ul class="uk-navbar-nav">
+                            <li class="uk-active"><a href="index.html">🏠︎ Home</a></li>
+                            <li>
+                                <a href="Properity_Management.html">Properity Management</a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-active"><a href="#">Active</a></li>
+                                        <li><a href="Properity_Management.html">View Properity</a></li>
+                                        <li><a href="Contacts.html">Customer Support</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="uk-navbar-item uk-logo" href="#">
+                        <img src="img/logo.png" alt="Logo" style="height: 60px;">
+                    </a>
+                    <div class="uk-navbar-center-right">
+                        <ul class="uk-navbar-nav">
+                            <li><a href="Payment.html">Booking & Appointment</a></li>
+                            <li><a href="Contacts.html">Contacts</a></li>
+                            <li><a href="About.html">About</a></li>
+                            <li><a href="Login.html">Login</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <main class="uk-container">
+        <br>
+        <!-- House Listings -->
+        <h2 class="uk-heading-line uk-text-center"><span>Available Houses for Rent</span></h2>
+        <div class="uk-text-center uk-margin-top uk-text-large">
+            <p class="uk-text-muted">These are the small details. For more inquiries, <span
+                    class="uk-text-primary">Contact Us</span>.</p>
+        </div>
+
+
+        <!-- Listings -->
+        <!-- Listing 1 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h2.png" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">3 BHK in Bangalore</h3>
+                    <p><strong>Location:</strong> Indiranagar, Bangalore</p>
+                    <p><strong>Square Feet:</strong> 1500 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹35,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('3 BHK in Bangalore', 'Indiranagar, Bangalore', '1500 sq.ft', '₹35,000/month')">Book Now</button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 2 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h3.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">2 BHK in Mumbai</h3>
+                    <p><strong>Location:</strong> Andheri West, Mumbai</p>
+                    <p><strong>Square Feet:</strong> 1200 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹50,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('2 BHK in Mumbai', 'Andheri West, Mumbai', '1200 sq.ft', '₹50,000/month')">Book Now</button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 3 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h4.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">4 BHK in Delhi</h3>
+                    <p><strong>Location:</strong> Hauz Khas, Delhi</p>
+                    <p><strong>Square Feet:</strong> 2000 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹60,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('4 BHK in Delhi', 'Hauz Khas, Delhi', '2000 sq.ft', '₹60,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 4 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h6.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">1 BHK in Chennai</h3>
+                    <p><strong>Location:</strong> Adyar, Chennai</p>
+                    <p><strong>Square Feet:</strong> 800 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹20,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('1 BHK in Chennai', 'Adyar, Chennai', '800 sq.ft', '₹20,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 5 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h5.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">3 BHK in Hyderabad</h3>
+                    <p><strong>Location:</strong> Jubilee Hills, Hyderabad</p>
+                    <p><strong>Square Feet:</strong> 1800 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹40,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('3 BHK in Hyderabad', 'Jubilee Hills, Hyderabad', '1800 sq.ft', '₹40,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 6 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h8.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">2 BHK in Pune</h3>
+                    <p><strong>Location:</strong> Koregaon Park, Pune</p>
+                    <p><strong>Square Feet:</strong> 1000 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹30,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('2 BHK in Pune', 'Koregaon Park, Pune', '1000 sq.ft', '₹30,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 7 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h9.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">1 BHK in Goa</h3>
+                    <p><strong>Location:</strong> Panaji, Goa</p>
+                    <p><strong>Square Feet:</strong> 600 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹20,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('1 BHK in Goa', 'Panaji, Goa', '600 sq.ft', '₹20,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 8 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h14.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">2 BHK in Kolkata</h3>
+                    <p><strong>Location:</strong> Salt Lake City, Kolkata</p>
+                    <p><strong>Square Feet:</strong> 1200 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹25,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('2 BHK in Kolkata', 'Salt Lake City, Kolkata', '1200 sq.ft', '₹25,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 9 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h22.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">4 BHK Villa in Jaipur</h3>
+                    <p><strong>Location:</strong> Malviya Nagar, Jaipur</p>
+                    <p><strong>Square Feet:</strong> 2500 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹70,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('4 BHK Villa in Jaipur', 'Malviya Nagar, Jaipur', '2500 sq.ft', '₹70,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 10 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h13.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">3 BHK in Ahmedabad</h3>
+                    <p><strong>Location:</strong> Satellite, Ahmedabad</p>
+                    <p><strong>Square Feet:</strong> 1600 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹45,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('3 BHK in Ahmedabad', 'Satellite, Ahmedabad', '1600 sq.ft', '₹45,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Listing 11 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h15.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">4 BHK in Mumbai</h3>
+                    <p><strong>Location:</strong> Bandra, Mumbai</p>
+                    <p><strong>Square Feet:</strong> 1300 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹52,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('4 BHK in Mumbai', 'Bandra, Mumbai', '1300 sq.ft', '₹52,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 12 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h16.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">3 BHK in Ahmedabad</h3>
+                    <p><strong>Location:</strong> Navrangpura, Ahmedabad</p>
+                    <p><strong>Square Feet:</strong> 2800 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹55,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('3 BHK in Ahmedabad', 'Navrangpura, Ahmedabad', '2800 sq.ft', '₹55,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Listing 13 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h17.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">4 BHK in Chhattisgarh</h3>
+                    <p><strong>Location:</strong> Drug, Chhattisgarh</p>
+                    <p><strong>Square Feet:</strong> 1600 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹42,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('4 BHK in Chhattisgarh', 'Drug, Chhattisgarh', '1600 sq.ft', '₹42,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Listing 14 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h18.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">5 BHK in Assam</h3>
+                    <p><strong>Location:</strong> Guwahati, Assam</p>
+                    <p><strong>Square Feet:</strong> 2600 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹75,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('5 BHK in Assam', 'Guwahati, Assam', '2600 sq.ft', '₹75,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listing 15 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h19.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">3 BHK in Punjab</h3>
+                    <p><strong>Location:</strong> Ludhiana, Punjab</p>
+                    <p><strong>Square Feet:</strong> 1100 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹35,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('3 BHK in Punjab', 'Ludhiana, Punjab', '1100 sq.ft', '₹35,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Listing 16 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h20.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">2 BHK Apartment in Delhi</h3>
+                    <p><strong>Location:</strong> Lajpat Nagar, Delhi</p>
+                    <p><strong>Square Feet:</strong> 900 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹12,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('2 BHK Apartment in Delhi', 'Lajpat Nagar, Delhi', '900 sq.ft', '₹12,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Listing 17 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h21.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">4 BHK in Chhattisgarh</h3>
+                    <p><strong>Location:</strong> Bilaspur, Chhattisgarh</p>
+                    <p><strong>Square Feet:</strong> 2000 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹55,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('4 BHK in Chhattisgarh', 'Bilaspur, Chhattisgarh', '2000 sq.ft', '₹55,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Listing 18 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h23.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">1 BHK in Chennai</h3>
+                    <p><strong>Location:</strong> T. Nagar, Chennai</p>
+                    <p><strong>Square Feet:</strong> 800 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹11,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('1 BHK in Chennai', 'T. Nagar, Chennai', '800 sq.ft', '₹11,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Listing 19 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h24.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">2 BHK in Chandigarh</h3>
+                    <p><strong>Location:</strong> Sector 19, Chandigarh</p>
+                    <p><strong>Square Feet:</strong> 1100 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹25,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('2 BHK in Chandigarh', 'Sector 19, Chandigarh', '1100 sq.ft', '₹25,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Listing 20 -->
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="img/h25.jpg" alt="House Image" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">3 BHK in Delhi</h3>
+                    <p><strong>Location:</strong> Janpath, New Delhi</p>
+                    <p><strong>Square Feet:</strong> 2500 sq.ft</p>
+                    <p><strong>Rent:</strong> ₹35,000/month</p>
+                    <a href="Contacts.html"><button class="uk-button uk-button-primary">Contact</button></a>
+                    <button class="uk-button uk-button-secondary" onclick="storePropertyDetails('3 BHK in Delhi', 'Janpath, New Delhi', '2500 sq.ft', '₹35,000/month')">Book Now</button>
+                </div>
+            </div>
+        </div>
+<!--script-->
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
+
+
+
+    </main>
+
+
+    <footer class="uk-section uk-section-secondary uk-text-center">
+        <div class="uk-container">
+            <p>&copy; 2024 Home Rentals. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

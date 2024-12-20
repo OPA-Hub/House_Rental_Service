@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title >Booking & Appointment</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="uk-navbar-container">
+        <div class="uk-container">
+            <div uk-navbar>
+                <div class="uk-navbar-center">
+                    <div class="uk-navbar-center-left">
+                        <ul class="uk-navbar-nav">
+                            <li class="uk-active"><a href="index.html">🏠︎ Home</a></li>
+                            <li>
+                                <a href="Properity_Management.html">Property Management</a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-active"><a href="#">Active</a></li>
+                                        <li><a href="Properity_Management.html">View Property</a></li>
+                                        <li><a href="Contacts.html">Customer Support</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="uk-navbar-item uk-logo" href="#">
+                        <img src="img/logo.png" alt="Logo" style="height: 60px;">
+                    </a>
+                    <div class="uk-navbar-center-right">
+                        <ul class="uk-navbar-nav">
+                            <li><a href="Payment.html">Booking & Appointment</a></li>
+                            <li><a href="Contacts.html">Contacts</a></li>
+                            <li><a href="About.html">About</a></li>
+                            <li><a href="Login.html">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="uk-container">
+        <br>
+        <h2 class="uk-heading-line uk-text-center"><span>Appointment Booking Details</span></h2>
+
+        <div id="booking-details">
+            <!-- Property details will be inserted here -->
+        </div>
+
+        <div class="uk-margin-top">
+            <button class="uk-button uk-button-danger" onclick="removeBooking()">Remove Booking</button>
+            <button class="uk-button uk-button-primary" onclick="showPaymentForm()">Appointment Booking</button>
+        </div>
+
+        <!-- Payment Form -->
+        <div id="paymentForm" class="uk-card uk-card-default uk-card-body uk-margin-top" style="display: none;">
+            <h3 class="uk-card-title uk-text-center">Appointment Details</h3>
+            <form>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="name">Full Name</label>
+                    <input class="uk-input" type="text" id="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="address">Address</label>
+                    <input class="uk-input" type="text" id="address" placeholder="Enter your address" required>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="phone">Phone Number</label>
+                    <input class="uk-input" type="tel" id="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="email">Email</label>
+                    <input class="uk-input" type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="payment-method">Payment Method</label>
+                    <select class="uk-select" id="payment-method" required>
+                        <option value="" disabled selected>Select payment method</option>
+                        <option value="upi">UPI</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="debit-card">Debit Card</option>
+                        <option value="cash">Cash</option>
+                    </select>
+                </div>
+                <button type="button" class="uk-button uk-button-primary uk-width-1-1" onclick="submitPayment()">Submit Booking</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function displayPropertyDetails() {
+            const propertyDetails = JSON.parse(localStorage.getItem('propertyDetails'));
+
+            if (propertyDetails) {
+                document.getElementById('booking-details').innerHTML = `
+                    <h3>${propertyDetails.title}</h3>
+                    <p><strong>Location:</strong> ${propertyDetails.location}</p>
+                    <p><strong>Square Feet:</strong> ${propertyDetails.sqft}</p>
+                    <p><strong>Rent:</strong> ${propertyDetails.rent}</p>
+                `;
+            } else {
+                document.getElementById('booking-details').innerHTML = `<p>No booking found.</p>`;
+            }
+        }
+
+        function removeBooking() {
+            localStorage.removeItem('propertyDetails');
+            window.location.href = "Properity_Management.html"; // Redirect back to property management
+        }
+
+        function showPaymentForm() {
+            document.getElementById('paymentForm').style.display = 'block';
+        }
+
+        function submitPayment() {
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const paymentMethod = document.getElementById('payment-method').value;
+
+            if (name && address && phone && email && paymentMethod) {
+                alert(`Payment submitted successfully!
+Name: ${name}
+Address: ${address}
+Phone: ${phone}
+Email: ${email}
+Payment Method: ${paymentMethod}`);
+                window.location.href = "index.html"; // Redirect to the home page after submission
+            } else {
+                alert("Please fill out all fields before submitting.");
+            }
+        }
+
+        // Display the property details when the page loads
+        window.onload = displayPropertyDetails;
+
+
+
+        //for record
+        function submitPayment() {
+        const name = document.getElementById("name").value;
+        const address = document.getElementById("address").value;
+        const phone = document.getElementById("phone").value;
+        const email = document.getElementById("email").value;
+        const paymentMethod = document.getElementById("payment-method").value;
+        const propertyDetails = JSON.parse(localStorage.getItem("propertyDetails"));
+
+        if (name && address && phone && email && paymentMethod && propertyDetails) {
+            const bookingData = JSON.parse(localStorage.getItem("bookingData")) || [];
+
+            // Add new booking entry
+            bookingData.push({
+                name,
+                address,
+                phone,
+                email,
+                paymentMethod,
+                propertyTitle: propertyDetails.title,
+                rent: propertyDetails.rent,
+            });
+
+            // Save updated booking data to localStorage
+            localStorage.setItem("bookingData", JSON.stringify(bookingData));
+
+            alert("Payment submitted successfully and booking recorded!");
+            window.location.href = "index.html"; // Redirect after submission
+        } else {
+            alert("Please fill out all fields before submitting.");
+        }
+    }
+    </script>
+</body>
+
+</html>

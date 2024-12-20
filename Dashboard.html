@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.3/dist/css/uikit.min.css" />
+</head>
+<body class="uk-flex uk-flex-center uk-flex-middle uk-height-viewport uk-background-muted">
+
+    <!-- Login Form (Visible Initially) -->
+    <div id="loginForm" class="uk-card uk-card-default uk-card-body uk-width-medium">
+        <h3 class="uk-card-title uk-text-center">Admin Login</h3>
+        <form>
+            <div class="uk-margin">
+                <label for="userId" class="uk-form-label">User ID</label>   <!--user id admin-->
+                <input class="uk-input" type="text" id="userId" placeholder="Enter User ID">
+            </div>
+            <div class="uk-margin">
+                <label for="password" class="uk-form-label">Password</label> <!--password 1234-->
+                <input class="uk-input" type="password" id="password" placeholder="Enter Password">
+            </div>
+            <button type="button" class="uk-button uk-button-primary uk-width-1-1" onclick="validateLogin()">Login</button>
+            <p id="errorMessage" class="uk-text-danger uk-text-small uk-margin-small-top" style="display: none;">
+                Invalid User ID or Password
+            </p>
+        </form>
+    </div>
+
+    <!-- Admin Dashboard Content (Initially Hidden) -->
+    <div id="adminContent" style="display: none;">
+
+        <!-- Admin Table for Rental Home Details -->
+        <div id="adminTable" class="uk-container uk-container-small">
+            <h2 class="uk-heading-line uk-text-center"><span>Rental Home Details</span></h2>
+            <table class="uk-table uk-table-divider uk-table-hover uk-table-middle uk-table-responsive">
+                <thead>
+                    <tr>
+                        <th>BHK</th>
+                        <th>State</th>
+                        <th>Location</th>
+                        <th>Square Feet</th>
+                        <th>Rent/Month</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 BHK</td>
+                        <td>Maharashtra</td>
+                        <td>Mumbai</td>
+                        <td>450</td>
+                        <td>₹25,000</td>
+                    </tr>
+                    <tr>
+                        <td>2 BHK</td>
+                        <td>Karnataka</td>
+                        <td>Bangalore</td>
+                        <td>900</td>
+                        <td>₹35,000</td>
+                    </tr>
+                    <tr>
+                        <td>3 BHK</td>
+                        <td>Tamil Nadu</td>
+                        <td>Chennai</td>
+                        <td>1,200</td>
+                        <td>₹40,000</td>
+                    </tr>
+                    <tr>
+                        <td>1 BHK</td>
+                        <td>Delhi</td>
+                        <td>Saket</td>
+                        <td>500</td>
+                        <td>₹18,000</td>
+                    </tr>
+                    <tr>
+                        <td>2 BHK</td>
+                        <td>West Bengal</td>
+                        <td>Kolkata</td>
+                        <td>1,000</td>
+                        <td>₹28,000</td>
+                    </tr>
+                    <tr>
+                        <td>3 BHK</td>
+                        <td>Rajasthan</td>
+                        <td>Jaipur</td>
+                        <td>1,500</td>
+                        <td>₹32,000</td>
+                    </tr>
+                    <tr>
+                        <td>2 BHK</td>
+                        <td>Punjab</td>
+                        <td>Amritsar</td>
+                        <td>850</td>
+                        <td>₹22,000</td>
+                    </tr>
+                    <tr>
+                        <td>1 BHK</td>
+                        <td>Kerala</td>
+                        <td>Kochi</td>
+                        <td>550</td>
+                        <td>₹20,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Admin Table for Booking Data -->
+        <main class="uk-container">
+            <h2 class="uk-heading-line uk-margin-top"><span>Booking Table</span></h2>
+            <table class="uk-table uk-table-striped uk-table-hover uk-table-responsive">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Full Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Payment Method</th>
+                        <th>Property Title</th>
+                        <th>Rent</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingTable">
+                    <!-- Booking entries will be inserted dynamically -->
+                </tbody>
+            </table>
+        </main>
+
+    </div>
+
+    <!-- Logout Option -->
+    <nav class="uk-navbar-container uk-navbar-dark uk-background-secondary">
+        <div class="uk-container">
+            <div uk-navbar>
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-item uk-logo" href="#">Admin Dashboard</a>
+                </div>
+                <div class="uk-navbar-right">
+                    <a href="index.html" class="uk-button uk-button-primary">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.3/dist/js/uikit-icons.min.js"></script>
+
+    <script>
+        // Validate login credentials
+        function validateLogin() {
+            const userId = document.getElementById('userId').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const loginForm = document.getElementById('loginForm');
+            const adminContent = document.getElementById('adminContent');
+
+            // Debugging step: Log the entered values
+            console.log('Entered User ID:', userId);
+            console.log('Entered Password:', password);
+
+            // Check if user credentials are correct
+            if (userId === 'admin' && password === '1234') {
+                errorMessage.style.display = 'none'; // Hide error message if login is successful
+                loginForm.style.display = 'none';    // Hide login form
+                adminContent.style.display = 'block'; // Show admin content
+            } else {
+                errorMessage.style.display = 'block'; // Show error message if credentials are incorrect
+            }
+        }
+
+        // Function to load booking data
+        function loadBookingData() {
+            const bookings = JSON.parse(localStorage.getItem("bookingData")) || [];
+            const bookingTable = document.getElementById("bookingTable");
+
+            if (bookings.length === 0) {
+                bookingTable.innerHTML = `<tr><td colspan="9" class="uk-text-center">No bookings available</td></tr>`;
+                return;
+            }
+
+            bookingTable.innerHTML = bookings.map((booking, index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${booking.name}</td>
+                    <td>${booking.address}</td>
+                    <td>${booking.phone}</td>
+                    <td>${booking.email}</td>
+                    <td>${booking.paymentMethod}</td>
+                    <td>${booking.propertyTitle}</td>
+                    <td>${booking.rent}</td>
+                    <td><button class="uk-button uk-button-danger" onclick="removeBooking(${index})">Remove</button></td>
+                </tr>
+            `).join('');
+        }
+
+        // Function to remove a booking record
+        function removeBooking(index) {
+            const bookings = JSON.parse(localStorage.getItem("bookingData")) || [];
+            bookings.splice(index, 1); // Remove the booking at the specified index
+            localStorage.setItem("bookingData", JSON.stringify(bookings)); // Save the updated list
+            loadBookingData(); // Reload the table with updated data
+        }
+
+        // Load bookings on page load
+        window.onload = loadBookingData;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign Up Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css" />
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+        <!----navbar-->
+
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+                <div uk-navbar>
+        
+                    <div class="uk-navbar-center">
+        
+                        <div class="uk-navbar-center-left">
+                            <ul class="uk-navbar-nav">
+                                <li class="uk-active"><a href="index.html">🏠︎ Home</a></li>
+                                <li>
+                                    <a href="Properity_Management.html">Properity Management</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li class="uk-active"><a href="#">Active</a></li>
+                                            <li><a href="Properity_Management.html">View Properity</a></li>
+                                            <li><a href="Contacts.html">Customer Support</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="uk-navbar-item uk-logo" href="#">
+                            <img src="img/logo.png" alt="Logo" style="height: 60px;">
+                        </a>
+                        <div class="uk-navbar-center-right">
+                            <ul class="uk-navbar-nav">
+                                <li><a href="Payment.html">Booking & Appointment</a></li>
+                                <li><a href="Contacts.html">Contacts</a></li>
+                                <li><a href="About.html">About</a></li>
+                                <li><a href="Login.html">Login</a></li>
+                                
+                            </ul>
+                        </div>
+        
+                    </div>
+        
+                </div>
+            </div>
+        </nav>
+
+    <!-- Sign-Up Form -->
+    <div class="uk-container uk-margin-large-top">
+        <h2 class="uk-heading-line uk-text-center"><span>Sign Up</span></h2>
+        <form id="signUpForm" class="uk-form-stacked">
+            <!-- Name -->
+            <div class="uk-margin">
+                <label class="uk-form-label" for="name">Full Name</label>
+                <input class="uk-input" type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Mobile Number -->
+            <div class="uk-margin">
+                <label class="uk-form-label" for="mobile">Mobile Number</label>
+                <input class="uk-input" type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+            </div>
+
+            <!-- Gender -->
+            <div class="uk-margin">
+                <label class="uk-form-label">Gender</label>
+                <div class="uk-form-controls">
+                    <label><input class="uk-radio" type="radio" name="gender" value="Male" required> Male</label>
+                    <label><input class="uk-radio" type="radio" name="gender" value="Female" required> Female</label>
+                    <label><input class="uk-radio" type="radio" name="gender" value="Other" required> Other</label>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="uk-margin">
+                <label class="uk-form-label" for="address">Address</label>
+                <textarea class="uk-textarea" id="address" name="address" placeholder="Enter your address" rows="3" required></textarea>
+            </div>
+
+            <!-- Email -->
+            <div class="uk-margin">
+                <label class="uk-form-label" for="email">Email</label>
+                <input class="uk-input" type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Password -->
+            <div class="uk-margin">
+                <label class="uk-form-label" for="password">Create Password</label>
+                <input class="uk-input" type="password" id="password" name="password" placeholder="Create a password" required>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="uk-margin">
+                <button type="submit" class="uk-button uk-button-primary uk-width-1-1">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-flex uk-flex-center">
+            <div class="uk-width-1-2 uk-text-center">
+                <h2>Successfully Submitted!</h2>
+                <p>Your data has been successfully submitted.</p>
+                <button class="uk-button uk-button-primary" onclick="showPasswordPrompt()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Protection Modal -->
+    <div id="passwordModal" class="uk-modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h3 class="uk-text-center">Only for Owners </h3> <!--password 1234-->
+            <input class="uk-input" type="password" id="passwordInput" placeholder="Enter password" required>
+            <div class="uk-margin-top uk-text-center">
+                <button class="uk-button uk-button-primary" onclick="verifyPassword()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Table (Initially Hidden) -->
+    <div id="dataTable" style="display:none" class="uk-container uk-margin-large-top">
+        <h2 class="uk-heading-line uk-text-center"><span>User Data</span></h2>
+        <table class="uk-table uk-table-striped uk-table-hover uk-table-responsive">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="dataTableBody">
+                <!-- Data will be inserted dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const form = document.getElementById("signUpForm");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById("name").value,
+                mobile: document.getElementById("mobile").value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                address: document.getElementById("address").value,
+                email: document.getElementById("email").value,
+            };
+
+            // Retrieve the current login history from localStorage
+            let loginHistory = JSON.parse(localStorage.getItem("loginHistory")) || [];
+
+            // Add new user data to the login history array
+            loginHistory.push(formData);
+
+            // Store the updated login history back to localStorage
+            localStorage.setItem("loginHistory", JSON.stringify(loginHistory));
+
+            // Store the latest form data in localStorage as well
+            localStorage.setItem("userDetails", JSON.stringify(formData));
+
+            // Show success modal
+            UIkit.modal("#successModal").show();
+        });
+
+        // Close the success modal and show password prompt
+        function showPasswordPrompt() {
+            UIkit.modal("#successModal").hide();
+            UIkit.modal("#passwordModal").show();
+        }
+
+        // Verify password and show data
+        function verifyPassword() {
+            const enteredPassword = document.getElementById("passwordInput").value;
+            if (enteredPassword === "1234") {
+                // Password correct, show data table
+                const loginHistory = JSON.parse(localStorage.getItem("loginHistory"));
+                const tableBody = document.getElementById("dataTableBody");
+
+                // Insert all user data into the table
+                tableBody.innerHTML = loginHistory.map(userData => `
+                    <tr>
+                        <td>${userData.name}</td>
+                        <td>${userData.mobile}</td>
+                        <td>${userData.gender}</td>
+                        <td>${userData.address}</td>
+                        <td>${userData.email}</td>
+                    </tr>
+                `).join("");
+
+                // Show the data table
+                document.getElementById("dataTable").style.display = "block";
+                UIkit.modal("#passwordModal").hide();
+            } else {
+                alert("Incorrect Password. Try again.");
+            }
+        }
+    </script>
+</body>
+
+</html>
